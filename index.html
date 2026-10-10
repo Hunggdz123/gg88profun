@@ -18,7 +18,25 @@
     <script src="https://cdn.tailwindcss.com" defer></script>
 
 </head>
-<body class="no-js font-sans antialiased">
+<body class="no-js font-sans antialiased site-locked">
+
+    <!-- Separate site access gate; unrelated to the site's membership links. -->
+    <section id="siteUnlockScreen" class="site-unlock" aria-labelledby="siteUnlockTitle">
+        <div class="site-unlock-card">
+            <img class="site-unlock-logo" src="assets/vip-badges/logo-gg88.png" alt="GG88">
+            <p class="site-unlock-eyebrow">TRUY CẬP RIÊNG TƯ</p>
+            <h1 id="siteUnlockTitle">Mở khóa trang web</h1>
+            <p class="site-unlock-description">Nhập tài khoản được cấp để tiếp tục.</p>
+            <form id="siteUnlockForm" class="site-unlock-form">
+                <label for="siteUnlockUsername">Tài khoản</label>
+                <input id="siteUnlockUsername" name="username" type="text" autocomplete="username" required>
+                <label for="siteUnlockPassword">Mật khẩu</label>
+                <input id="siteUnlockPassword" name="password" type="password" autocomplete="current-password" required>
+                <p id="siteUnlockMessage" class="site-unlock-message" role="status" aria-live="polite"></p>
+                <button type="submit">Mở khóa</button>
+            </form>
+        </div>
+    </section>
 
     <!-- ================= SECURITY SHIELD MODAL (ANTI-INSPECT / F12 HUD) ================= -->
     <div id="tfSecurityShield" style="display:none;" class="fixed inset-0 z-[999999] bg-[#08130E]/95 backdrop-blur-2xl flex items-center justify-center p-4 select-none" role="dialog" aria-modal="true" aria-label="Cảnh báo bảo mật">

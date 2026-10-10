@@ -859,3 +859,62 @@
                 stroke-dashoffset: 0;
                 animation: tfSuccessCheck 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             }
+
+        /* ---------- Separate site access gate ---------- */
+        body.site-locked { overflow: hidden; }
+        body.site-locked > :not(#siteUnlockScreen) { display: none !important; }
+        #siteUnlockScreen[hidden] { display: none; }
+        .site-unlock {
+            position: fixed;
+            inset: 0;
+            z-index: 2000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow-y: auto;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(79, 191, 131, .2), transparent 55%),
+                linear-gradient(160deg, #10251B, #08130E 70%);
+        }
+        .site-unlock-card {
+            width: min(100%, 420px);
+            padding: clamp(28px, 7vw, 44px);
+            border: 1px solid rgba(143, 227, 181, .28);
+            border-radius: 24px;
+            background: linear-gradient(160deg, rgba(20, 45, 33, .96), rgba(8, 19, 14, .96));
+            box-shadow: 0 24px 90px rgba(0, 0, 0, .55), 0 0 45px rgba(79, 191, 131, .12);
+        }
+        .site-unlock-logo { display: block; width: 76px; height: 76px; object-fit: contain; margin: 0 auto 18px; }
+        .site-unlock-eyebrow { margin: 0 0 8px; color: var(--cyan); font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-align: center; }
+        .site-unlock-card h1 { margin: 0; color: #fff; font-family: Montserrat, sans-serif; font-size: clamp(1.45rem, 5vw, 1.8rem); font-weight: 800; text-align: center; }
+        .site-unlock-description { margin: 10px 0 28px; color: var(--muted); font-size: .92rem; text-align: center; }
+        .site-unlock-form { display: grid; gap: 10px; }
+        .site-unlock-form label { margin-top: 4px; color: #e6f3e9; font-size: .84rem; font-weight: 600; }
+        .site-unlock-form input {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            background: rgba(8, 19, 14, .8);
+            color: #fff;
+            font: inherit;
+        }
+        .site-unlock-form input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(143, 227, 181, .14); }
+        .site-unlock-message { min-height: 1.35em; margin: 4px 0 0; color: #ff9b9b; font-size: .82rem; }
+        .site-unlock-form button {
+            min-height: 50px;
+            margin-top: 2px;
+            border: 0;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #C9F2D5, #62B77F);
+            color: #10251B;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            transition: filter .2s, transform .2s;
+        }
+        .site-unlock-form button:hover { filter: brightness(1.08); }
+        .site-unlock-form button:active { transform: scale(.98); }

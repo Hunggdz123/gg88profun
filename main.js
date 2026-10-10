@@ -97,6 +97,47 @@ tailwind.config = {
 
     })();
 
+        // This is a convenience gate for this static demo, not server-side authentication.
+        const SITE_UNLOCK_CREDENTIALS = { username: 'manhlinh', password: 'manhlinh2l' };
+        const SITE_UNLOCK_SESSION_KEY = 'gg88-site-unlocked';
+        const siteUnlockForm = document.getElementById('siteUnlockForm');
+        const siteUnlockScreen = document.getElementById('siteUnlockScreen');
+        const siteUnlockMessage = document.getElementById('siteUnlockMessage');
+
+        function unlockSite() {
+            document.body.classList.remove('site-locked');
+            siteUnlockScreen.hidden = true;
+        }
+
+        if (siteUnlockForm && siteUnlockScreen && siteUnlockMessage) {
+            try {
+                if (sessionStorage.getItem(SITE_UNLOCK_SESSION_KEY) === 'true') {
+                    unlockSite();
+                }
+            } catch (error) {
+                siteUnlockMessage.textContent = 'Không thể khôi phục phiên mở khóa. Vui lòng đăng nhập lại.';
+            }
+
+            siteUnlockForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('siteUnlockUsername').value;
+                const password = document.getElementById('siteUnlockPassword').value;
+
+                if (username !== SITE_UNLOCK_CREDENTIALS.username || password !== SITE_UNLOCK_CREDENTIALS.password) {
+                    siteUnlockMessage.textContent = 'Tài khoản hoặc mật khẩu không chính xác.';
+                    return;
+                }
+
+                try {
+                    sessionStorage.setItem(SITE_UNLOCK_SESSION_KEY, 'true');
+                } catch (error) {
+                    siteUnlockMessage.textContent = 'Không thể lưu phiên đăng nhập; trang sẽ yêu cầu mở khóa lại khi tải lại.';
+                }
+
+                unlockSite();
+            });
+        }
+
 document.body.classList.remove('no-js');
 
 'use strict';
