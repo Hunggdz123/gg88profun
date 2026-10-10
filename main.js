@@ -948,31 +948,6 @@ document.body.classList.remove('no-js');
             container.appendChild(fragment);
         }
 
-        // ================= Pique text toggle =================
-        function setupPiqueToggle() {
-            const btn = document.getElementById('piqueToggleBtn');
-            const extra = document.getElementById('piqueExtraText');
-            const textEl = document.getElementById('piqueToggleText');
-            const arrowEl = document.getElementById('piqueToggleArrow');
-            if (!btn || !extra) return;
-
-            let isExpanded = true;
-            btn.addEventListener('click', () => {
-                isExpanded = !isExpanded;
-                if (isExpanded) {
-                    extra.style.maxHeight = extra.scrollHeight + 'px';
-                    extra.style.opacity = '1';
-                    textEl.textContent = 'Ẩn bớt';
-                    arrowEl.textContent = '∧';
-                } else {
-                    extra.style.maxHeight = '0px';
-                    extra.style.opacity = '0';
-                    textEl.textContent = 'Xem thêm';
-                    arrowEl.textContent = '∨';
-                }
-            });
-        }
-
         // ================= Xử lý chuyển điểm =================
         function setupTransferFeature() {
             const transferSection = document.getElementById('transfer');
@@ -1498,7 +1473,6 @@ document.body.classList.remove('no-js');
             setupAnimations();
             setupHeroTilt();
             setupRewards();
-            setupPiqueToggle();
             setupTransferFeature();
             createParticles();
         });
